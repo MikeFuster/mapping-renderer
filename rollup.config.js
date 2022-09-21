@@ -18,7 +18,6 @@ export default [
         file: packageJson.main,
         format: 'iife',
         name: 'MonacoJSONForms',
-        sourcemap: true,
         globals: {
           react: 'React',
           '@jsonforms/core': 'JSONFormsCore',
@@ -29,7 +28,6 @@ export default [
       {
         file: packageJson.module,
         format: 'esm',
-        sourcemap: true,
       },
     ],
     plugins: [
@@ -47,7 +45,7 @@ export default [
   },
   {
     input: 'dist/esm/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+    output: [{ file: 'dist/index.d.ts', format: 'esm', sourcemap: false }],
     plugins: [dts()],
   },
 ];
