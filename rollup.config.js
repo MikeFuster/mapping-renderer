@@ -17,7 +17,7 @@ export default [
       {
         file: packageJson.main,
         format: 'iife',
-        name: 'MonacoJSONForms',
+        name: 'MappingRenderer',
         globals: {
           react: 'React',
           '@jsonforms/core': 'JSONFormsCore',
