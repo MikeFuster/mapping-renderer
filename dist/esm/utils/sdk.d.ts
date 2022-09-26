@@ -1,35 +1,20 @@
-export declare const createSchema: ({ source, target, dataToTransform, }: {
+export declare const getKeyByUiSchemaType: (uischema: any, type: string) => null;
+export declare const createSchema: ({ source, target, uischema, dataToTransform, }: {
     source: any;
     target: any;
+    uischema: any;
     dataToTransform: any;
 }) => {
     schema: {
         type: string;
-        properties: {
-            keys: {
-                type: string;
-                items: {
-                    type: string;
-                    required: string[];
-                    properties: {
-                        source: {
-                            type: string;
-                            title: any;
-                            enum: any;
-                        };
-                        target: {
-                            type: string;
-                            title: any;
-                            enum: any;
-                        };
-                    };
-                };
-            };
-            dataToTransform: any;
-        };
+        properties: any;
     };
     data: {
-        keys: any;
+        [x: number]: any;
+        baseKeys: {
+            dynamicObjectKey: any;
+        };
     };
 };
 export declare const createRecipe: (data: any) => any;
+export declare const transformData: (data: any, sourceData: any) => any;

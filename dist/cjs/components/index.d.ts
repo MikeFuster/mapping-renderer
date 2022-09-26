@@ -1,2 +1,5 @@
-import MappingRendererControl, { MappingRendererControlTester, MappingRendererControlRenderer } from './MappingRenderer/MappingRenderer';
-export { MappingRendererControl, MappingRendererControlTester, MappingRendererControlRenderer };
+import MappingRendererControl from './MappingRenderer/MappingRenderer';
+import SourceTableControl from './SourceTable/SourceTable';
+import TransformedTableControl from './TransformedTable/TransformedTable';
+import * as sdk from '../utils/sdk';
+export { MappingRendererControl, SourceTableControl, TransformedTableControl, sdk };

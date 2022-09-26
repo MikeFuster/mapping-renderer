@@ -2,6 +2,7 @@
 
 declare module '@jsonforms/react' {
   const withJsonFormsControlProps: any;
+  const useJsonForms: any;
 }
 
 type JsonSchema = any;

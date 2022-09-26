@@ -25,22 +25,43 @@ const generateEnum = (schema: any) => {
   return schemaEnum;
 };
 
+export const getKeyByUiSchemaType = (uischema: any, type: string) => {
+  let objectKey = null;
+
+  Object.keys(dot.dot(uischema)).forEach((element) => {
+    if (element.includes('type') && dot.pick(element, uischema) === type) {
+      const scopePicker = element.replace('type', 'scope');
+      const scope = dot.pick(scopePicker, uischema);
+      const splittedScope = scope.split('/');
+      const key = splittedScope[splittedScope.length - 1];
+      objectKey = key;
+    }
+  });
+
+  return objectKey;
+};
+
 export const createSchema = ({
   source,
   target,
+  uischema,
   dataToTransform,
 }: {
   source: any;
   target: any;
+  uischema: any;
   dataToTransform: any;
 }) => {
+  const dynamicObjectKey: any = getKeyByUiSchemaType(uischema, 'Dynamic');
+  const sourceTableKey: any = getKeyByUiSchemaType(uischema, 'SourceTable');
+  const TransformedTableKey: any = getKeyByUiSchemaType(uischema, 'TransformedTable');
   const sourceEnum = generateEnum(source);
   const targetEnum = generateEnum(target);
 
   const schema = {
     type: 'object',
     properties: {
-      keys: {
+      [dynamicObjectKey]: {
         type: 'array',
         items: {
           type: 'object',
@@ -59,23 +80,46 @@ export const createSchema = ({
           },
         },
       },
-      dataToTransform,
+      ...(sourceTableKey && { [sourceTableKey]: { type: 'object' } }),
+      ...(TransformedTableKey && { [TransformedTableKey]: { type: 'object' } }),
     },
   };
 
   return {
     schema: schema,
-    data: { keys: sourceEnum.map((val: any) => ({ source: val })) },
+    data: {
+      [dynamicObjectKey]: sourceEnum.map((source: any) => ({ source })),
+      [sourceTableKey]: dataToTransform,
+      [TransformedTableKey]: dataToTransform,
+      baseKeys: {
+        dynamicObjectKey: dynamicObjectKey,
+      },
+    },
   };
 };
 
 export const createRecipe = (data: any) => {
-  return data.keys.reduce(
+  if (!data.baseKeys.dynamicObjectKey) {
+    return;
+  }
+
+  return data[data.baseKeys.dynamicObjectKey].reduce(
     //@ts-ignore
     (acc, { source, target }) => {
+      if (!target?.value) {
+        return acc;
+      }
+
       acc[source.value] = target.value;
       return acc;
     },
     {}
   );
+};
+
+export const transformData = (data: any, sourceData: any) => {
+  const recipe = createRecipe(data);
+  const transformedData = dot.transform(dot.dot(recipe), sourceData) as any;
+
+  return transformedData;
 };
