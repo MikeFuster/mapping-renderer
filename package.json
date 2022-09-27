@@ -1,6 +1,6 @@
 {
   "name": "mapping-renderer",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "scripts": {
     "rollup": "rollup -c",
@@ -25,14 +25,14 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-terser": "^7.0.2",
     "tslib": "^2.4.0",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.3",
+    "react": "^16.14.0"
   },
   "peerDependencies": {
     "@jsonforms/core": "^2.5.2",
     "@jsonforms/material-renderers": "^2.5.2",
     "@jsonforms/react": "^2.5.2",
-    "@material-ui/core": "^4.11.2",
-    "react": "^16.14.0"
+    "@material-ui/core": "^4.11.2"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
