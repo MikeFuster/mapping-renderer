@@ -11,19 +11,12 @@ const packageJson = require('./package.json');
 
 export default [
   {
-    external: ['react', '@jsonforms/core', '@jsonforms/react', '@material-ui/core'],
     input: 'src/index.ts',
     output: [
       {
         file: packageJson.main,
         format: 'iife',
-        name: 'MappingRenderer',
-        globals: {
-          react: 'React',
-          '@jsonforms/core': 'JSONFormsCore',
-          '@jsonforms/react': 'JSONFormsReact',
-          '@material-ui/core': 'MaterialUI',
-        },
+        name: 'SessionDataMapper',
       },
       {
         file: packageJson.module,

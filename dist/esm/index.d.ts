@@ -1,1 +1,1 @@
-export * from './components';
+export * as sessionDataMapper from './sdk';
