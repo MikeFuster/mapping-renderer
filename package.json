@@ -1,6 +1,6 @@
 {
   "name": "mapping-renderer",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "",
   "scripts": {
     "rollup": "rollup -c",
@@ -36,6 +36,18 @@
   },
   "peerDependenciesMeta": {
     "react": {
+      "optional": true
+    },
+    "@jsonforms/core": {
+      "optional": true
+    },
+    "@jsonforms/material-renderers": {
+      "optional": true
+    },
+    "@jsonforms/react": {
+      "optional": true
+    },
+    "@material-ui/core": {
       "optional": true
     }
   },
