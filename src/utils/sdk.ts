@@ -25,7 +25,7 @@ const generateEnum = (schema: any) => {
   return schemaEnum;
 };
 
-export const getKeyByUiSchemaType = (uischema: any, type: string) => {
+const getKeyByUiSchemaType = (uischema: any, type: string) => {
   let objectKey = null;
 
   Object.keys(dot.dot(uischema)).forEach((element) => {

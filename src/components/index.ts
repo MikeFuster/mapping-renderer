@@ -1,6 +1,6 @@
 import MappingRendererControl from './MappingRenderer/MappingRenderer';
 import SourceTableControl from './SourceTable/SourceTable';
 import TransformedTableControl from './TransformedTable/TransformedTable';
-import * as sdk from '../utils/sdk';
+import * as session from '../utils/sdk';
 
-export { MappingRendererControl, SourceTableControl, TransformedTableControl, sdk };
+export { MappingRendererControl, SourceTableControl, TransformedTableControl, session };

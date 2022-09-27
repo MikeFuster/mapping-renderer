@@ -1,4 +1,3 @@
-export declare const getKeyByUiSchemaType: (uischema: any, type: string) => null;
 export declare const createSchema: ({ source, target, uischema, dataToTransform, }: {
     source: any;
     target: any;
