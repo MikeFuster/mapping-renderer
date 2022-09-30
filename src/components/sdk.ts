@@ -1,7 +1,7 @@
 import dot from 'dot-object';
 
 const parseKey = (key: string) => {
-  const keyWithoutProperties = key.replaceAll('properties.', '');
+  const keyWithoutProperties = key.split('properties.').join('');
   const splittedKey = keyWithoutProperties.split('.');
   const objectKey = splittedKey.slice(0, splittedKey.length - 1).join('.');
   return objectKey;

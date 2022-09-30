@@ -15,7 +15,7 @@ export default [
     output: [
       {
         file: packageJson.main,
-        format: 'iife',
+        format: 'cjs',
         name: 'SessionDataMapper',
       },
       {
